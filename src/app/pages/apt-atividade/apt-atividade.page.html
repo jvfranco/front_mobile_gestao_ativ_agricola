@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar class="title">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Apontamento de Atividades</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" novalidate class="form">
+    <ion-item class="item-form">
+      <ion-label>Data da Atividade</ion-label>
+      <ion-datetime placeholder="Selecione a data" formControlName="dataAtividade"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Hora de Início</ion-label>
+      <ion-datetime placeholder="Selecione a hora" display-format="HH:mm" picker-format="HH:mm" formControlName="horaInicio"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Hora de Término</ion-label>
+      <ion-datetime placeholder="Selecione a hora" display-format="HH:mm" picker-format="HH:mm" formControlName="horaTermino"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Propriedade</ion-label>
+      <ion-select interface="popover" formControlName="propriedade" (ionChange)="recuperaTodosTalhosPorPropriedade()">
+        <ion-select-option *ngFor="let prop of propriedades" value="{{prop.id}}">{{ prop.nome }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Safra</ion-label>
+      <ion-select interface="popover" formControlName="safra">
+        <ion-select-option *ngFor="let safra of safras" value="{{safra.id}}">{{ safra.identificacao }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Talhão</ion-label>
+      <ion-select interface="popover" formControlName="talhao">
+        <ion-select-option *ngFor="let talhao of talhoes" value="{{talhao.id}}">{{ talhao.identificacao }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label position="floating">Descrição da Atividade</ion-label>
+      <ion-textarea formControlName="descricaoAtividade"></ion-textarea>
+    </ion-item>
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary" (click)="salvarAptHeader()">
+        <ion-icon name="arrow-forward-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </form>
+</ion-content>

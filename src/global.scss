@@ -24,3 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.title {
+    font-weight: bolder;
+    color: #FFFFFF;
+    --background: #002B5C;
+}

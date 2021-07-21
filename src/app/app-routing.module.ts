@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'apt-modal',
+    loadChildren: () => import('./pages/apt-modal/apt-modal.module').then( m => m.AptModalPageModule)
   }
 ];
 

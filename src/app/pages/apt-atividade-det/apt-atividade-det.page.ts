@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { AptAtividadeDetalhe } from 'src/app/models/aptAtividadeDetalhe';
 import { AtividadeService } from 'src/app/services/atividade.service';
+import { AptModalPage } from '../apt-modal/apt-modal.page';
 
 @Component({
   selector: 'app-apt-atividade-det',
@@ -15,7 +17,8 @@ export class AptAtividadeDetPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: AtividadeService
+    private service: AtividadeService,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,7 @@ export class AptAtividadeDetPage implements OnInit {
   retornarDetalhes(apontamentoID: string) {
     this.service.recuperarTodosDetalhesPorApontamento(apontamentoID).subscribe(
       data => {
+        console.log(JSON.stringify(data));
         this.detalhes = data;
       },
       err => {
@@ -34,4 +38,20 @@ export class AptAtividadeDetPage implements OnInit {
     )
   }
 
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: AptModalPage,
+      cssClass: 'modal-class',
+      componentProps: {
+        'apontamentoID': this.apontamentoID
+      }
+    });
+
+    modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    if (data.dismissed) {
+      this.retornarDetalhes(this.apontamentoID);
+    }
+  }
 }

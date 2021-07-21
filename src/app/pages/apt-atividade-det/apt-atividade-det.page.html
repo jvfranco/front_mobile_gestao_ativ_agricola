@@ -10,16 +10,16 @@
   <ion-card *ngFor="let det of detalhes"> 
     <ion-card-content>
       <p><b>Máquina: </b>{{ det.maquina.modelo }}</p>
-      <p><b>Insumo: </b>{{ det.insumo.identificacao }}</p>
-      <p><b>Qtde Insumo: </b>{{ det.quantidadeInsumo }} {{ det.insumo.unidadeDeMedida.abreviacao }}</p>
-      <p><b>Híbrido: </b>{{ det.hibrido.identificacao }}</p>
-      <p><b>Qtde Híbrido: </b>{{ det.quantidadeHibrido }} {{ det.hibrido.unidadeDeMedida.abreviacao }} </p>
+      <p *ngIf="det.insumo.identificacao"><b>Insumo: </b>{{ det.insumo.identificacao }}</p>
+      <p *ngIf="det.insumo.identificacao"><b>Qtde Insumo: </b>{{ det.quantidadeInsumo }} {{ det.insumo.unidadeDeMedida.abreviacao }}</p>
+      <p *ngIf="det.hibrido.identificacao"><b>Híbrido: </b>{{ det.hibrido.identificacao }}</p>
+      <p *ngIf="det.hibrido.identificacao"><b>Qtde Híbrido: </b>{{ det.quantidadeHibrido }} {{ det.hibrido.unidadeDeMedida.abreviacao }} </p>
       <p><b>Funcionário: </b>{{ det.funcionario.nome }}</p>
     </ion-card-content>
   </ion-card>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary">
+    <ion-fab-button color="primary" (click)="showModal()">
       <ion-icon name="add-sharp"></ion-icon>
     </ion-fab-button>
   </ion-fab>

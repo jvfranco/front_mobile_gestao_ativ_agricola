@@ -86,6 +86,7 @@ export class AptAtividadePage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+        this.router.navigateByUrl(`/home/detalhe/1`);
       });
   }
 

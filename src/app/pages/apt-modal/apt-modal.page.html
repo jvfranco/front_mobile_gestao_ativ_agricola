@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="title">
+    <ion-title>Adição de Detalhe</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" novalidate class="form">
+
+    <ion-item class="item-form">
+      <ion-label>Máquina</ion-label>
+      <ion-select interface="popover" formControlName="maquina">
+        <ion-select-option *ngFor="let maq of maquinas" value="{{maq.id}}">{{ maq.modelo }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Insumo</ion-label>
+      <ion-select interface="popover" formControlName="insumo" >
+        <ion-select-option *ngFor="let ins of insumos" value="{{ins.id}}">{{ ins.identificacao }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label position="floating">Quantidade do Insumo</ion-label>
+      <ion-input formControlName="quantidadeInsumo"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Híbrido</ion-label>
+      <ion-select interface="popover" formControlName="hibrido" >
+        <ion-select-option *ngFor="let hib of hibridos" value="{{hib.id}}">{{ hib.identificacao }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label position="floating">Quantidade do Híbrido</ion-label>
+      <ion-input formControlName="quantidadeHibrido"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Funcionário</ion-label>
+      <ion-select interface="popover" formControlName="funcionario" >
+        <ion-select-option *ngFor="let func of funcionarios" value="{{func.id}}">{{ func.nome }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button color="primary" (click)="salvar()" style="margin-top: 20px;">Salvar</ion-button>
+  </form> 
+</ion-content>

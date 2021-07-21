@@ -37,3 +37,12 @@
     color: #FFFFFF;
     --background: #002B5C;
 }
+
+.modal-class .modal-wrapper {
+    height: 90%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    border-radius: 2%;
+ }

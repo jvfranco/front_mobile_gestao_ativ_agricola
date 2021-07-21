@@ -18,6 +18,10 @@ export class AtividadeService {
   private readonly ID_PATH: string = '/{id}';
   private readonly APT_DET_PATH: string = 'apt-atividade-det';
   private readonly ID_DET_PATH: string = 'detalhes/{idApontamento}';  
+  private readonly HIB_PATH: string = 'hibrido';
+  private readonly INS_PATH: string = 'insumo';
+  private readonly MAQ_PATH: string = 'maquina';
+  private readonly PES_PATH: string = 'pessoa';
 
   constructor(private http: HttpClient) { } 
 
@@ -47,7 +51,22 @@ export class AtividadeService {
   }
 
   recuperarTodosDetalhesPorApontamento(idApontamento: string): Observable<any> {
-    return this.http.get(env.baseUrl + this.ID_DET_PATH.replace('{idApontamento}', idApontamento));
+    return this.http.get(env.baseUrl + this.APT_DET_PATH + '/' + this.ID_DET_PATH.replace('{idApontamento}', idApontamento));
   }
 
+  retornarTodosHibridosSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.HIB_PATH);
+  }
+
+  retornarTodasInsumosSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.INS_PATH);
+  }
+
+  retornarTodasMaquinasSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.MAQ_PATH);
+  }
+
+  retornarTodasPessoasSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.PES_PATH);
+  }
 }

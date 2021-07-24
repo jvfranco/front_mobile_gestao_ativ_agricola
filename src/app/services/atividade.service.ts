@@ -5,6 +5,7 @@ import { environment as env } from '../../environments/environment';
 import { AptAtividade } from '../models/aptAtividade';
 import { Observable } from 'rxjs/internal/Observable';
 import { AptAtividadeDetalheForm } from '../models/aptAtividadeDetalheForm';
+import { Ocorrencia } from '../models/ocorrencia';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class AtividadeService {
   private readonly INS_PATH: string = 'insumo';
   private readonly MAQ_PATH: string = 'maquina';
   private readonly PES_PATH: string = 'pessoa';
+  private readonly OCORRENCIA_PATH: string = 'ocorrencia';
 
   constructor(private http: HttpClient) { } 
 
@@ -68,5 +70,9 @@ export class AtividadeService {
 
   retornarTodasPessoasSemPaginacao(): Observable<any> {
     return this.http.get(env.baseUrl + this.PES_PATH);
+  }
+
+  salvarNovaOcorrencia(ocorrencia: Ocorrencia): Observable<any> {
+    return this.http.post(env.baseUrl + this.OCORRENCIA_PATH, ocorrencia);
   }
 }

@@ -64,7 +64,7 @@ export class AptModalPage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
-        msg = 'Ocorreram erros no cadastro do híbrido.';
+        msg = 'Ocorreram erros no cadastro do Detalhe.';
         this.closeModal();
       }
     )

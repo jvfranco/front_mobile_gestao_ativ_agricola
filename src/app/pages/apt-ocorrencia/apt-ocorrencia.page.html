@@ -3,11 +3,69 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    
+
     <ion-title>Apontamento de Ocorrências</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form" novalidate class="form">
+    <ion-item class="item-form">
+      <ion-label>Data da Ocorrência</ion-label>
+      <ion-datetime display-format="DD/MM/YYYY HH:mm" placeholder="Selecione a data"
+        formControlName="dataOcorrencia"></ion-datetime>
+    </ion-item>
 
+    <ion-item class="item-form">
+      <ion-label>Propriedade</ion-label>
+      <ion-select interface="popover" formControlName="propriedade" (ionChange)="recuperaTodosTalhosPorPropriedade()">
+        <ion-select-option *ngFor="let prop of propriedades" value="{{prop.id}}">{{ prop.nome }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Safra</ion-label>
+      <ion-select interface="popover" formControlName="safra">
+        <ion-select-option *ngFor="let safra of safras" value="{{safra.id}}">{{ safra.identificacao }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Talhão</ion-label>
+      <ion-select interface="popover" formControlName="talhao">
+        <ion-select-option *ngFor="let talhao of talhoes" value="{{talhao.id}}">{{ talhao.identificacao }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label>Título</ion-label>
+      <ion-input placeholder="Informe um título" formControlName="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-label position="floating">Descrição da Ocorrência</ion-label>
+      <ion-textarea formControlName="descricao"></ion-textarea>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <ion-button color="success" expand="full" (click)="geolocalizacao()" style="width: 100%;">Obter Posição</ion-button>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <p><b>Latitude: </b> {{ latitude }}</p>
+    </ion-item>
+
+    <ion-item class="item-form">
+      <p><b>Longitude: </b> {{ longitude }}</p>
+    </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary" (click)="salvar()" [disabled]="form.invalid">
+        <ion-icon name="save-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </form>
 </ion-content>

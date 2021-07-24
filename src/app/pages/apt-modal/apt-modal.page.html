@@ -46,6 +46,6 @@
       </ion-select>
     </ion-item>
 
-    <ion-button color="primary" (click)="salvar()" style="margin-top: 20px;">Salvar</ion-button>
+    <ion-button color="primary" (click)="salvar()" style="margin-top: 20px;" [disabled]="form.invalid">Salvar</ion-button>
   </form> 
 </ion-content>

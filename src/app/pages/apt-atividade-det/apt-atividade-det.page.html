@@ -10,10 +10,10 @@
   <ion-card *ngFor="let det of detalhes"> 
     <ion-card-content>
       <p><b>Máquina: </b>{{ det.maquina.modelo }}</p>
-      <p *ngIf="det.insumo.identificacao"><b>Insumo: </b>{{ det.insumo.identificacao }}</p>
-      <p *ngIf="det.insumo.identificacao"><b>Qtde Insumo: </b>{{ det.quantidadeInsumo }} {{ det.insumo.unidadeDeMedida.abreviacao }}</p>
-      <p *ngIf="det.hibrido.identificacao"><b>Híbrido: </b>{{ det.hibrido.identificacao }}</p>
-      <p *ngIf="det.hibrido.identificacao"><b>Qtde Híbrido: </b>{{ det.quantidadeHibrido }} {{ det.hibrido.unidadeDeMedida.abreviacao }} </p>
+      <p *ngIf="det.insumo != null"><b>Insumo: </b>{{ det.insumo.identificacao }}</p>
+      <p *ngIf="det.insumo != null"><b>Qtde Insumo: </b>{{ det.quantidadeInsumo }} {{ det.insumo.unidadeDeMedida.abreviacao }}</p>
+      <p *ngIf="det.hibrido != null"><b>Híbrido: </b>{{ det.hibrido.identificacao }}</p>
+      <p *ngIf="det.hibrido != null"><b>Qtde Híbrido: </b>{{ det.quantidadeHibrido }} {{ det.hibrido.unidadeDeMedida.abreviacao }} </p>
       <p><b>Funcionário: </b>{{ det.funcionario.nome }}</p>
     </ion-card-content>
   </ion-card>

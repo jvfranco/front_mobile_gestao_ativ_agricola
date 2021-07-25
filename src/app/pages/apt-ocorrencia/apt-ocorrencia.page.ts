@@ -93,7 +93,7 @@ export class AptOcorrenciaPage implements OnInit {
     }
 
     const ocorrencia: Ocorrencia = this.form.value;
-    ocorrencia.coordenadas = `{ \"latitude\":\"${this.latitude}\",\"longitude\":\"${this.longitude}\" }`;
+    ocorrencia.coordenadas = `{ \"latitude\": ${this.latitude},\"longitude\": ${this.longitude} }`;
     ocorrencia.dataOcorrencia = this.montaData(this.form.get('dataOcorrencia').value);
     console.log(JSON.stringify(ocorrencia));
     let msg: string = '';

@@ -1,5 +1,8 @@
 {
   "name": "agricola-mobile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }

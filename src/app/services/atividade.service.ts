@@ -25,6 +25,7 @@ export class AtividadeService {
   private readonly PES_PATH: string = 'pessoa';
   private readonly OCORRENCIA_PATH: string = 'ocorrencia';
 
+
   constructor(private http: HttpClient) { } 
 
   salvarAptAtivAgricola(apontamento: AptAtividade): Observable<any> {
@@ -74,5 +75,13 @@ export class AtividadeService {
 
   salvarNovaOcorrencia(ocorrencia: Ocorrencia): Observable<any> {
     return this.http.post(env.baseUrl + this.OCORRENCIA_PATH, ocorrencia);
+  }
+
+  retornarTodasAtividadesSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.APT_DET_PATH);
+  }
+
+  retornarTodasOcorrenciasSemPaginacao(): Observable<any> {
+    return this.http.get(env.baseUrl + this.OCORRENCIA_PATH);
   }
 }

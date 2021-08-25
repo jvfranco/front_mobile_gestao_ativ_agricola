@@ -1,22 +1,24 @@
 <ion-content class="back">
   <div class="text-center">
     <ion-card class="back-login">
-      <ion-card-header class="" style="text-align: center;">     
-        <img src="../../../assets/icon/campo.png" alt="logo">   
+      <ion-card-header class="" style="text-align: center;">
+        <img src="../../../assets/icon/campo.png" alt="logo">
         <ion-card-subtitle style="font-size: xx-large; color: #FFFFFF;">Gestão Agrícola</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item class="back-item">
-          <ion-label position="floating">Usuário</ion-label>
-          <ion-input autofocus></ion-input>
-        </ion-item>
+        <form [formGroup]="form" novalidate class="form">
+          <ion-item class="back-item">
+            <ion-label position="floating">Usuário</ion-label>
+            <ion-input autofocus formControlName="login"></ion-input>
+          </ion-item>
 
-        <ion-item class="back-item">
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
+          <ion-item class="back-item">
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" formControlName="senha"></ion-input>
+          </ion-item>
 
-        <ion-button expand="full" shape="round" style="margin-top: 30px;" [routerLink]="['/home']">Login</ion-button>
+          <ion-button expand="full" shape="round" style="margin-top: 30px;" (click)="logar()">Login</ion-button>
+        </form>
       </ion-card-content>
     </ion-card>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AptAtividadeDetalhe } from 'src/app/models/aptAtividadeDetalhe';
 import { AtividadeService } from 'src/app/services/atividade.service';
 import { AptModalPage } from '../apt-modal/apt-modal.page';
@@ -18,7 +18,8 @@ export class AptAtividadeDetPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private service: AtividadeService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -34,6 +35,7 @@ export class AptAtividadeDetPage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+        this.presentToast('Erro ao buscar detalhes.');
       }
     )
   }
@@ -53,5 +55,13 @@ export class AptAtividadeDetPage implements OnInit {
     if (data.dismissed) {
       this.retornarDetalhes(this.apontamentoID);
     }
+  }
+
+  async presentToast(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 }

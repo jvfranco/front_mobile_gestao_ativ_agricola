@@ -4,6 +4,11 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
 
+    <ion-tab-button tab="apontamentos">
+      <ion-icon name="reader-sharp"></ion-icon>
+      <ion-label>Apontamentos</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button tab="ocorrencia">
       <ion-icon name="warning-sharp"></ion-icon>
       <ion-label>Ocorrências</ion-label>
@@ -14,7 +19,7 @@
       <ion-label>Atividades</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="login">
+    <ion-tab-button tab="login" (click)="logout()">
       <ion-icon name="exit-sharp"></ion-icon>
       <ion-label>Sair</ion-label>
     </ion-tab-button>

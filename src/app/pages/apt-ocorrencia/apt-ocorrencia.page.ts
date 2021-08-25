@@ -128,5 +128,4 @@ export class AptOcorrenciaPage implements OnInit {
   resetaForm() {
     this.form.reset();
   }
-
 }

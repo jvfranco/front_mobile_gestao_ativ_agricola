@@ -9,6 +9,10 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
+        path: 'apontamentos',
+        loadChildren: () => import('../apontamentos/apontamentos.module').then(m => m.ApontamentosPageModule)
+      },
+      {
         path: 'ocorrencia',
         loadChildren: () => import('../apt-ocorrencia/apt-ocorrencia.module').then(m => m.AptOcorrenciaPageModule)
       },

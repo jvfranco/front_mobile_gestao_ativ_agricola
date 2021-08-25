@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="title">
+    <ion-title>Apontamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let ocor of ocorrencias"> 
+    <ion-card-header>
+      <ion-card-subtitle style="color: red;"><b>Ocorrência</b></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><b>Titulo: </b>{{ ocor.titulo }}</p>
+      <p><b>Descrição: </b>{{ ocor.descricao }}</p>
+      <p><b>Data: </b>{{ ocor.dataOcorrencia }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let atv of atividades"> 
+    <ion-card-header>
+      <ion-card-subtitle style="color: blue;"><b>Atividade</b></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><b>Atividade: </b>{{ atv.idApontamentoCabecalho.descricaoAtividade }}</p>
+      <p><b>Safra: </b>{{ atv.idApontamentoCabecalho.safra.identificacao }}</p>
+      <p><b>Data: </b>{{ atv.idApontamentoCabecalho.dataAtividade }}</p>
+      <p><b>Propriedade: </b>{{ atv.idApontamentoCabecalho.propriedade.nome }}</p>
+      <p><b>Talhão: </b>{{ atv.idApontamentoCabecalho.talhao.identificacao }}</p>
+      <p><b>Máquina: </b>{{ atv.maquina.modelo }}</p>
+      <p *ngIf="atv.insumo != null"><b>Insumo: </b>{{ atv.insumo.identificacao }}</p>
+      <p *ngIf="atv.insumo != null"><b>Qtde Insumo: </b>{{ atv.quantidadeInsumo }} {{ atv.insumo.unidadeDeMedida.abreviacao }}</p>
+      <p *ngIf="atv.hibrido != null"><b>Híbrido: </b>{{ atv.hibrido.identificacao }}</p>
+      <p *ngIf="atv.hibrido != null"><b>Qtde Híbrido: </b>{{ atv.quantidadeHibrido }} {{ atv.hibrido.unidadeDeMedida.abreviacao }} </p>
+      <p><b>Funcionário: </b>{{ atv.funcionario.nome }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

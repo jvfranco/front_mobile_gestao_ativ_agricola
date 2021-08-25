@@ -2,6 +2,7 @@ import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { AptAtividade } from 'src/app/models/aptAtividade';
 import { Propriedade } from 'src/app/models/propriedade';
 import { Safra } from 'src/app/models/safra';
@@ -23,7 +24,8 @@ export class AptAtividadePage implements OnInit {
   constructor(
     private router: Router,
     private service: AtividadeService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,7 @@ export class AptAtividadePage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+       this.presentToast('Erro ao buscar propridades.');
       }
     )
   }
@@ -59,6 +62,7 @@ export class AptAtividadePage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+        this.presentToast('Erro ao buscar safras.');
       }
     )
   }
@@ -71,6 +75,7 @@ export class AptAtividadePage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+        this.presentToast('Erro ao buscar talhões.');
       }
     )
   }
@@ -86,6 +91,7 @@ export class AptAtividadePage implements OnInit {
       },
       err => {
         console.log(JSON.stringify(err));
+        this.presentToast('Erro ao salvar apontamento.');
         this.router.navigateByUrl(`/home/detalhe/1`);
       });
   }
@@ -116,6 +122,14 @@ export class AptAtividadePage implements OnInit {
 
   resetaForm() {
     this.form.reset();
+  }
+
+  async presentToast(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
